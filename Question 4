@@ -1,0 +1,55 @@
+import java.util.*;
+class Employee {
+    int empId;
+    String empName;
+    String empAddress;
+    String empDesignation;
+    String empDepartment;
+    long empPhoneNo;
+    double empBasicPay;
+    double empHRA;
+    double empDA;
+    double empTA;
+    double empSalary;
+    public Employee(int empId, String empName, String empAddress, String empDesignation, String empDepartment, long empPhoneNo, double empBasicPay) {
+        this.empId = empId;
+        this.empName = empName;
+        this.empAddress = empAddress;
+        this.empDesignation = empDesignation;
+        this.empDepartment = empDepartment;
+        this.empPhoneNo = empPhoneNo;
+        this.empBasicPay = empBasicPay;
+        this.empHRA = 0.1 * empBasicPay;
+        this.empDA = 0.02 * empBasicPay;
+        this.empTA = 0.02 * empBasicPay;
+        this.empSalary = empBasicPay + empHRA + empDA + empTA;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(1, "John", "New York", "Manager", "HR", 1234567890, 50000));
+        employees.add(new Employee(2, "Alice", "Los Angeles", "Engineer", "IT", 9876543210, 60000));
+        employees.add(new Employee(3, "Bob", "Chicago", "Manager", "Marketing", 5555555555, 70000));
+        employees.add(new Employee(4, "Jane", "Houston", "Engineer", "IT", 1111111111, 55000));
+        employees.add(new Employee(5, "Mike", "Phoenix", "Manager", "HR", 2222222222, 65000));
+        for (Employee employee : employees) {
+            System.out.println("Employee ID: " + employee.empId);
+            System.out.println("Name: " + employee.empName);
+            System.out.println("Total Salary: " + employee.empSalary);
+            System.out.println();
+        }
+        Map<String, Employee> highestPaidEmployees = new HashMap<>();
+        for (Employee employee : employees) {
+            if (!highestPaidEmployees.containsKey(employee.empDepartment) || employee.empSalary > highestPaidEmployees.get(employee.empDepartment).empSalary) {
+                highestPaidEmployees.put(employee.empDepartment, employee);
+            }
+        }
+        for (Map.Entry<String, Employee> entry : highestPaidEmployees.entrySet()) {
+            System.out.println("Department: " + entry.getKey());
+            System.out.println("Highest Paid Employee: " + entry.getValue().empName);
+            System.out.println("Total Salary: " + entry.getValue().empSalary);
+            System.out.println();
+        }
+    }
+}
