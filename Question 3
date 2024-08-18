@@ -1,0 +1,56 @@
+import java.util.Scanner;
+class Student {
+    String Name;
+    String RegNo;
+    String Dept;
+    int Year;
+    int Semester;
+    int Mark1, Mark2, Mark3, Mark4, Mark5, Mark6;
+    int Total;
+    double Average;
+    void getDetails() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Name: ");
+        Name = scanner.nextLine();
+        System.out.println("Enter Reg. No.: ");
+        RegNo = scanner.nextLine();
+        System.out.println("Enter Dept.: ");
+        Dept = scanner.nextLine();
+        System.out.println("Enter Year: ");
+        Year = scanner.nextInt();
+        System.out.println("Enter Semester: ");
+        Semester = scanner.nextInt();
+        System.out.println("Enter Marks for 6 subjects: ");
+        Mark1 = scanner.nextInt();
+        Mark2 = scanner.nextInt();
+        Mark3 = scanner.nextInt();
+        Mark4 = scanner.nextInt();
+        Mark5 = scanner.nextInt();
+        Mark6 = scanner.nextInt();
+    }
+    void Display() {
+        Total = Mark1 + Mark2 + Mark3 + Mark4 + Mark5 + Mark6;
+        Average = Total / 6.0;
+        System.out.println("Name: " + Name);
+        System.out.println("Reg. No.: " + RegNo);
+        System.out.println("Dept.: " + Dept);
+        System.out.println("Year: " + Year);
+        System.out.println("Semester: " + Semester);
+        System.out.println("Marks: ");
+        System.out.println("Subject 1: " + Mark1);
+        System.out.println("Subject 2: " + Mark2);
+        System.out.println("Subject 3: " + Mark3);
+        System.out.println("Subject 4: " + Mark4);
+        System.out.println("Subject 5: " + Mark5);
+        System.out.println("Subject 6: " + Mark6);
+        System.out.println("Total: " + Total);
+        System.out.println("Average: " + Average + "%");
+    }
+}
+public class StudentMarks {
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.getDetails();
+        student.Display();
+    }
+}
